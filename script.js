@@ -14,6 +14,22 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "a" || e.key === "ArrowLeft") showPrevious();
 });
 
+let startX;
+let endX;
+
+document.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", (e) => {
+  endX = e.changedTouches[0].clientX;
+  if (startX > endX) {
+    showNext();
+  } else if (startX < endX) {
+    showPrevious();
+  }
+});
+
 function showNext() {
   for (i = 0; i < textBlock.length; i++) {
     if (!textBlock[i].classList.contains("hide")) {

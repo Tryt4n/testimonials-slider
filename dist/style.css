@@ -45,7 +45,7 @@ button {
   border-radius: 9999px;
   overflow: hidden;
 }
-.btn-slider :hover {
+.btn-slider :hover, .btn-slider :focus {
   opacity: 0.5;
 }
 .btn-slider button {

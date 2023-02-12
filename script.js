@@ -3,7 +3,18 @@ const imageBlock = document.querySelectorAll("[data-testimonials-image-block]");
 const prevBtn = document.querySelector("[data-btn-previous]");
 const nextButton = document.querySelector("[data-btn-next]");
 
-nextButton.addEventListener("click", () => {
+nextButton.addEventListener("click", showNext);
+
+prevBtn.addEventListener("click", showPrevious);
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "d" || e.key === "ArrowRight") showNext();
+});
+window.addEventListener("keydown", (e) => {
+  if (e.key === "a" || e.key === "ArrowLeft") showPrevious();
+});
+
+function showNext() {
   for (i = 0; i < textBlock.length; i++) {
     if (!textBlock[i].classList.contains("hide")) {
       textBlock[i].classList.add("hide");
@@ -18,9 +29,8 @@ nextButton.addEventListener("click", () => {
       break;
     }
   }
-});
-
-prevBtn.addEventListener("click", () => {
+}
+function showPrevious() {
   for (i = 0; i < textBlock.length; i++) {
     if (!textBlock[i].classList.contains("hide")) {
       textBlock[i].classList.add("hide");
@@ -35,4 +45,4 @@ prevBtn.addEventListener("click", () => {
       break;
     }
   }
-});
+}

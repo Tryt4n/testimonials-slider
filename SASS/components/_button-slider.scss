@@ -1,0 +1,37 @@
+@use "../abstracts/mixins" as *;
+@use "../base/functions" as func;
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.btn-slider {
+  @include flex(row);
+  width: fit-content;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 50px;
+  border-radius: 9999px;
+  overflow: hidden;
+  & :hover {
+    opacity: 0.5;
+  }
+
+  & button {
+    transition: 300ms ease-in-out;
+
+    height: func.rem(18);
+    cursor: pointer;
+    @include flex(row, center, center);
+  }
+
+  &--left {
+    padding: 1.5rem 1rem;
+    padding-right: 1.25rem;
+  }
+  &--right {
+    padding: 1.5rem 1rem;
+    padding-left: 1.25rem;
+  }
+}

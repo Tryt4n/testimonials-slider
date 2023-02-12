@@ -1,0 +1,147 @@
+@forward "./base/index";
+@forward "./components/button-slider";
+@use "./base/functions" as func;
+@use "./abstracts/colors" as c;
+@use "./abstracts/variables" as v;
+@use "./abstracts/mixins" as *;
+
+.hide {
+  display: none;
+}
+
+.testimonials {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  @include flex(row, center, center);
+  padding: 2rem;
+  background: url("/images/pattern-bg.svg");
+  background-position: 75% 35%;
+  background-repeat: no-repeat;
+  &::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/images/pattern-curve.svg");
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+
+  &__text-container {
+    position: relative;
+    max-width: 650px;
+    height: fit-content;
+    margin: -5rem;
+    z-index: 1;
+    &::before {
+      position: absolute;
+      content: "";
+      width: func.rem(120);
+      height: func.rem(100);
+      top: 0;
+      left: 0;
+      background: url("/images/pattern-quotes.svg");
+      translate: 75% -65%;
+    }
+  }
+
+  &__text-block {
+    font-size: 1rem;
+    color: c.$dark-blue;
+    padding-left: 5rem;
+    opacity: 0;
+    animation: show 1000ms ease-in forwards;
+
+    &__paragraph {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    &__name {
+      font-weight: 700;
+    }
+
+    &__role {
+      color: c.$grayish-blue;
+      font-weight: 500;
+    }
+  }
+
+  &__image {
+    & img {
+      opacity: 0;
+      animation: show 1000ms ease-in forwards;
+
+      width: 540px;
+      height: 540px;
+      border-radius: 0.25rem;
+    }
+
+    & .btn-wrap {
+      translate: 75% -75%;
+    }
+  }
+}
+
+@media (width < 910px) {
+  .testimonials {
+    @include flex(column-reverse, flex-end, center);
+    gap: 7.5rem;
+    background-size: func.rem(425);
+    background-position: 50% 0%;
+    padding: 3rem 0;
+
+    &__text-container {
+      width: 90%;
+      max-width: fit-content;
+
+      &::before {
+        width: func.rem(90);
+        height: func.rem(75);
+        background-size: cover;
+        left: 50%;
+        translate: -50% -65%;
+      }
+    }
+
+    &__text-block {
+      padding: 0;
+      text-align: center;
+
+      &__paragraph {
+        font-size: 1.5rem;
+        margin-bottom: 1.25rem;
+      }
+
+      &__name-wrap {
+        @include flex(column);
+        gap: 0.25rem;
+      }
+    }
+
+    &__image {
+      @include flex(column, center, center);
+
+      & img {
+        width: 320px;
+        height: 320px;
+      }
+      & .btn-wrap {
+        translate: 0 -75%;
+        scale: 0.75;
+      }
+    }
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

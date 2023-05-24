@@ -1,5 +1,7 @@
 # Frontend Mentor - Coding bootcamp testimonials slider
 
+[Link to the page](https://coding-bootcamp-slider-testimonials.netlify.app/)
+
 ![Design preview for the Coding bootcamp testimonials slider coding challenge](./design/desktop-preview.jpg)
 
 ## Welcome! 👋
